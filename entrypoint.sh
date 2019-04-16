@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if [ "${KUBERNETES_CERTIFICATE}" == "" ]
 then
   kubectl config set-cluster helm --insecure-skip-tls-verify=true --server=${API_SERVER}
