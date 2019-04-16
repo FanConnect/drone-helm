@@ -1,12 +1,30 @@
 pipeline:
-  publish:
+  publish_latest:
     image: plugins/docker
     repo: fanconnecttv/drone-helm
-    auto_tag: true
+    tags:
+    - latest
     secrets:
     - docker_username
     - docker_password
     when:
+      branch:
+      - master
       event:
       - push
+  publish_tags:
+    image: plugins/docker
+    repo: fanconnecttv/drone-helm
+    # Tag format should be <helm version>.<plugin release>, like 2.13.1.0
+    tags:
+    - ${DRONE_TAG%.*}
+    - ${DRONE_TAG%.*.*}
+    - ${DRONE_TAG%.*.*.*}
+    secrets:
+    - docker_username
+    - docker_password
+    when:
+      branch:
+      - master
+      event:
       - tag
