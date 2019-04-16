@@ -1,0 +1,12 @@
+pipeline:
+  publish:
+    image: plugins/docker
+    repo: fanconnecttv/drone-helm
+    auto_tag: true
+    secrets:
+    - docker_username
+    - docker_password
+    when:
+      event:
+      - push
+      - tag
