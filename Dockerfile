@@ -1,7 +1,7 @@
 FROM alpine
 
-ENV KUBE_LATEST_VERSION="v1.17.1" \
-    HELM_LATEST_VERSION="v2.16.1"
+ENV KUBE_LATEST_VERSION="v1.18.2" \
+    HELM_LATEST_VERSION="v2.16.6"
 
 RUN set -ex \
  && apk add --update --no-cache ca-certificates bash \
